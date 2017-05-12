@@ -16,7 +16,7 @@ Say we have this outdated Spider class
 
 `alex@tractorash:~/work/java$ pwd`
 
-_` /home/alex/work/java`_
+_ /home/alex/work/java_
 
 `alex@tractorash:~/work/java$ cat sai/Spider.java`
 
@@ -55,7 +55,7 @@ Now, if we compile and run the Main class we will get:
 
 `alex@tractorash:~/work/java$ java sai.Main`
 
-_`http://www.google.com/search?q=best+software+2009`_
+_http://www.google.com/search?q=best+software+2009_
 
 As we expected. Suppose we want to search for http://www.google.com/search?q=best+software+2010. The only way to do that is create another sai.Spider class and return the needed string.
 
@@ -63,7 +63,7 @@ So, here we go
 
 `alex@tractorash:~/h$ pwd`
 
-_`/home/alex/h`_
+_/home/alex/h_
 
 `alex@tractorash:~/h$ cat sai/Spider.java`
 
@@ -90,7 +90,7 @@ Then, switch to previous path:
 
 `alex@tractorash:~/work/java$ java -cp /home/alex/h:/home/alex/work/java sai.Main`
 
-_`http://www.google.com/search?q=best+software+2010`_
+_http://www.google.com/search?q=best+software+2010_
 
 So what did we do? We modified the classpath (http://java.sun.com/j2se/1.4.2/docs/tooldocs/windows/classpath.html) and told the JVM to load our new class first, since it’s first in our list of directories we specified as classpath.
 
@@ -160,17 +160,17 @@ Compiling patched versions of system classes can be a little tricky.
 First let’s compile our Integer class:
 
 `alex@tractorash:~/work/java$ javac java/lang/Integer.java`
-_`java/lang/Integer.java:571: warning: sun.misc.VM is Sun proprietary API and may be removed in a future release`_
+_java/lang/Integer.java:571: warning: sun.misc.VM is Sun proprietary API and may be removed in a future release_
 
-_`if (!sun.misc.VM.isBooted()) {`_
+_if (!sun.misc.VM.isBooted()) {_
 
-_`^`_
+_^_
 
-_`Note: java/lang/Integer.java uses unchecked or unsafe operations.`_
+_Note: java/lang/Integer.java uses unchecked or unsafe operations._
 
-_`Note: Recompile with -Xlint:unchecked for details.`_
+_Note: Recompile with -Xlint:unchecked for details._
 
-_`1 warning`_
+_1 warning_
 
 We get the warning because we use a sun.* class in our new class. Since sun.* packages and classes are proprietary to Sun, it is strongly advised not to use them, but in our case we just reuse them (so we can ignore the warning).
 
@@ -180,17 +180,17 @@ Now compile IntegerTest.java:
 
 `alex@tractorash:~/work/java$ javac -Xbootclasspath/p:/home/alex/work/java/lang/:/usr/lib/jvm/java-6-sun-1.6.0.15/jre/lib/rt.jar IntegerTest.java`
 
-_`./java/lang/Integer.java:571: warning: sun.misc.VM is Sun proprietary API and may be removed in a future release`_
+_./java/lang/Integer.java:571: warning: sun.misc.VM is Sun proprietary API and may be removed in a future release_
 
-_`if (!sun.misc.VM.isBooted()) {`_
+_if (!sun.misc.VM.isBooted()) {_
 
-_`^`_
+_^_
 
-_`Note: ./java/lang/Integer.java uses unchecked or unsafe operations.`_
+_Note: ./java/lang/Integer.java uses unchecked or unsafe operations._
 
-_`Note: Recompile with -Xlint:unchecked for details.`_
+_Note: Recompile with -Xlint:unchecked for details._
 
-_`1 warning`_
+_1 warning_
 
 Copy Integer.class to the directory where your IntegerTest class is:
 
@@ -202,9 +202,9 @@ Finally run IntegerTest:
 
 `alex@tractorash:~/work/java$ java -Xbootclasspath/p:/home/alex/work/java:/usr/lib/jvm/java-6-sun-1.6.0.15/jre/lib/rt.jar IntegerTest`
 
-_`Initial value: 1`_
+_Initial value: 1_
 
-_`New value: 25`_
+_New value: 25_
 
 Success! Now you have a mutable Integer class.
 
